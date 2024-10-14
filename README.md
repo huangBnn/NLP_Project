@@ -43,3 +43,22 @@ Distinguishing the parts-of-speech of a word in a sentence will help you better 
 - Compute the Viterbi algorithm
 - Compute the accuracy of your own model
 
+====================================================================================================================
+# project 4: Question duplicates using the Siamese Network
+A Siamese network is a neural network which uses the same weights while working in tandem on two different input vectors to compute comparable output vectors. The Siamese network you are about to implement looks something like this:
+
+![image](https://github.com/user-attachments/assets/91e7a7ae-e1e6-4916-a51a-516f347d7926)
+
+You get the question, get it vectorized and embedded, run it through an LSTM layer, normalize v1, v2 and and finally get the corresponding cosine similarity for each pair of questions. Because of the implementation of the loss function you will see in the next section, you are not going to have the cosine similarity as output of your Siamese network, but rather v1 and v2. You will add the cosine distance step once you reach the classification step.
+
+====================================================================================================================
+
+# project 5: NMT model with attention
+
+Adding an attention layer to RNN model avoids gradient vanish problem by giving the decoder access to all parts of the input sentence. To illustrate, let's just use a 4-word input sentence as shown below. Remember that a hidden state is produced at each timestep of the encoder (represented by the orange rectangles). These are all passed to the attention layer and each are given a score given the current activation (i.e. hidden state) of the decoder.
+
+![image](https://github.com/user-attachments/assets/9d172e6c-ac34-42df-9d0f-ce5ca2309b14)
+
+![image](https://github.com/user-attachments/assets/32902a35-6de1-4ede-8302-134682ae44fc)
+
+you can think of it as computing scores using queries (Q) and keys (K), followed by a multiplication of values (V) to get a context vector at a particular timestep of the decoder. This context vector is fed to the decoder RNN to get a set of probabilities for the next predicted word.
